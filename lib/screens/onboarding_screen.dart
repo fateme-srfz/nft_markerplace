@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:blurbox/blurbox.dart';
 import 'package:flutter/material.dart';
+import 'package:nft_markerplace/screens/home_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -77,7 +78,14 @@ class OnboardingScreen extends StatelessWidget {
                         //       0.24,
                         //     ),
                         //   ),
-                        //   onPressed: () {},
+                        //   onPressed: () {
+                        //     Navigator.pushReplacement(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => HomeScreen(),
+                        //       ),
+                        //     );
+                        //   },
                         //   child: Padding(
                         //     padding: const EdgeInsets.symmetric(
                         //       horizontal: 55,
@@ -99,7 +107,14 @@ class OnboardingScreen extends StatelessWidget {
                           child: BackdropFilter(
                             filter: ImageFilter.blur(sigmaX: 67, sigmaY: 67),
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HomeScreen(),
+                                  ),
+                                );
+                              },
                               child: Container(
                                 decoration: BoxDecoration(
                                   border: Border.all(
