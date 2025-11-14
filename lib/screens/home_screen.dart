@@ -5,6 +5,22 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Color(0xFF211134),
+      appBar: AppBar(
+        backgroundColor: Color(0xFF211134),
+        title: Center(
+          child: Text(
+            'NFT Marketplace',
+            style: TextStyle(
+              fontFamily: 'SFProDisplay',
+              fontSize: 25,
+              fontWeight: FontWeight.w700,
+              color: Color.fromRGBO(255, 255, 255, 1),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
