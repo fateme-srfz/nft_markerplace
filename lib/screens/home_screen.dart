@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nft_markerplace/models/feature_class.dart';
+import 'package:nft_markerplace/widgets/feature_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -19,6 +21,28 @@ class HomeScreen extends StatelessWidget {
               color: Color.fromRGBO(255, 255, 255, 1),
             ),
           ),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            FeatureCard(featurelist: FeatureClass.featureList),
+            const SizedBox(height: 40),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Trending collections',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: 'SFProDisplay',
+                  color: Color(0xFFFFFFFF),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
