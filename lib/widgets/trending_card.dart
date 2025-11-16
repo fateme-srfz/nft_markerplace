@@ -35,11 +35,19 @@ class TrendingCard extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            trending.imageurl,
-                            fit: BoxFit.cover,
-                            width: 200,
-                            height: 200,
+                          child: Material(
+                            clipBehavior: Clip.antiAlias,
+                            borderRadius:  BorderRadius.circular(15),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(15),
+                              onTap: () {},
+                              child: Ink.image(
+                                image: AssetImage(trending.imageurl),
+                                fit: BoxFit.cover,
+                                width: 200,
+                                height: 200,
+                              ),
+                            ),
                           ),
                         ),
                       ),
