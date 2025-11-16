@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nft_markerplace/models/feature_class.dart';
+import 'package:nft_markerplace/models/trending_class.dart';
 import 'package:nft_markerplace/widgets/feature_card.dart';
+import 'package:nft_markerplace/widgets/trending_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -42,6 +44,8 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 20),
+            TrendingCard(trendinglist: TrendingClass.trendinglist),
           ],
         ),
       ),
