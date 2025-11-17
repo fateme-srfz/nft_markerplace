@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class BottomNav extends StatelessWidget {
@@ -7,15 +9,17 @@ class BottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 90,
-      color: Colors.transparent,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(4, (i) => _buildNavItem(i)),
+    return ClipRRect(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        child: SizedBox(
+          height: 70,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(4, (i) => _buildNavItem(i)),
+          ),
         ),
       ),
     );
@@ -33,31 +37,26 @@ class BottomNav extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: InkResponse(
+        onTap: () => ontap(index),
+        radius: 36,
         containedInkWell: true,
         highlightShape: BoxShape.circle,
-        splashColor: Colors.white24,
-        radius: 26,
-        onTap: () => ontap(index),
-        child: Container(
-          width: 50,
-          height: 80,
-          child: ClipOval(
-            child: Center(
-              child: AnimatedContainer(
-                duration: Duration(milliseconds: 180),
-                padding: isSelected
-                    ? const EdgeInsets.all(6)
-                    : const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: isSelected ? Colors.white12 : Colors.transparent,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  icons[index],
-                  size: isSelected ? 29 : 28,
-                  color: isSelected ? Colors.black45 : Colors.black38,
-                ),
-              ),
+        splashColor: Colors.white12,
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 180),
+          padding: isSelected
+              ? const EdgeInsets.all(6)
+              : const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: isSelected ? Colors.white12 : Colors.transparent,
+            shape: BoxShape.circle,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Icon(
+              icons[index],
+              size: isSelected ? 29 : 28,
+              color: isSelected ? Colors.black45 : Colors.black38,
             ),
           ),
         ),

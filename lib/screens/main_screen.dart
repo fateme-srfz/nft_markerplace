@@ -28,26 +28,26 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[_currentIndex],
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.transparent,
-        elevation: 0,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsetsGeometry.symmetric(
-              horizontal: 8,
-              vertical: 4,
-            ),
-            child: BottomNav(
-              currentIndex: _currentIndex,
-              ontap: (i) {
-                setState(() {
-                  _currentIndex = i;
-                });
-              },
+      body: Stack(
+        children: [
+          pages[_currentIndex],
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: BottomNav(
+                currentIndex: _currentIndex,
+                ontap: (i) {
+                  setState(() {
+                    _currentIndex = i;
+                  });
+                },
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
