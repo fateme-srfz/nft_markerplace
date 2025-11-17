@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:blurbox/blurbox.dart';
 import 'package:flutter/material.dart';
 import 'package:nft_markerplace/screens/home_screen.dart';
+import 'package:nft_markerplace/screens/main_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -123,7 +124,7 @@ class OnboardingScreen extends StatelessWidget {
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => HomeScreen(),
+                                          builder: (context) => MainScreen(),
                                         ),
                                       );
                                     },
