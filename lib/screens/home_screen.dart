@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nft_markerplace/models/feature_class.dart';
+import 'package:nft_markerplace/models/seller_class.dart';
 import 'package:nft_markerplace/models/trending_class.dart';
 import 'package:nft_markerplace/widgets/feature_card.dart';
+import 'package:nft_markerplace/widgets/seller_card.dart';
 import 'package:nft_markerplace/widgets/trending_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -27,26 +29,44 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            FeatureCard(featurelist: FeatureClass.featureList),
-            const SizedBox(height: 40),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Trending collections',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: 'SFProDisplay',
-                  color: Color(0xFFFFFFFF),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              FeatureCard(featurelist: FeatureClass.featureList),
+              const SizedBox(height: 40),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Trending collections',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'SFProDisplay',
+                    color: Color(0xFFFFFFFF),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-            TrendingCard(trendinglist: TrendingClass.trendinglist),
-          ],
+              const SizedBox(height: 20),
+              TrendingCard(trendinglist: TrendingClass.trendinglist),
+              const SizedBox(height: 40),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Top seller',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'SFProDisplay',
+                    color: Color(0xFFFFFFFF),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              SellerCard(sellerlist: SellerClass.sellerlist),
+            ],
+          ),
         ),
       ),
     );
