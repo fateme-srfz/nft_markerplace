@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:nft_markerplace/screens/home_screen.dart';
 import 'package:nft_markerplace/widgets/bottom_nav.dart';
@@ -23,6 +25,16 @@ class _MainScreenState extends State<MainScreen> {
     ),
   ];
 
+  void _onNavTap(int idx) {
+    if (idx == 10) {
+      print('Hex button pressed');
+    } else {
+      setState(() {
+        _currentIndex = idx;
+      });
+    }
+  }
+
   int _currentIndex = 0;
 
   @override
@@ -34,17 +46,11 @@ class _MainScreenState extends State<MainScreen> {
           Positioned(
             left: 0,
             right: 0,
-            bottom: 20,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: BottomNav(
-                currentIndex: _currentIndex,
-                ontap: (i) {
-                  setState(() {
-                    _currentIndex = i;
-                  });
-                },
-              ),
+            bottom: 15,
+            child: BottomNav(
+              currentIndex: _currentIndex,
+              oTtap: _onNavTap,
+              onHexTap: () => _onNavTap(10),
             ),
           ),
         ],
