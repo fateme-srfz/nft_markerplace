@@ -34,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
           Positioned(
             left: 0,
             right: 0,
-            bottom: 10,
+            bottom: 20,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: BottomNav(
