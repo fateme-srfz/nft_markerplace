@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nft_markerplace/widgets/filter_bar.dart';
 import 'package:nft_markerplace/widgets/tab_bar.dart';
 
 class StateScreen extends StatelessWidget {
@@ -62,11 +63,15 @@ class StateScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Image.asset('assets/icons/Right Title.png'),
+            icon: Image.asset(
+              'assets/icons/Right Title.png',
+              width: 20,
+              height: 20,
+            ),
           ),
         ],
       ),
-      body: Column(children: [TabBarWidget()]),
+      body: Column(children: [TabBarWidget(), FilterBarWidget()]),
     );
   }
 }
