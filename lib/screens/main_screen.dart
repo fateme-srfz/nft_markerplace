@@ -1,11 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:nft_markerplace/screens/home_screen.dart';
+import 'package:nft_markerplace/screens/state_screen.dart';
 import 'package:nft_markerplace/widgets/bottom_nav.dart';
 
 class MainScreen extends StatefulWidget {
-  MainScreen({super.key});
+  const MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -14,11 +13,9 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final pages = [
     const HomeScreen(),
+     StateScreen(),
     const Center(
-      child: Text('Explore', style: TextStyle(color: Colors.white)),
-    ),
-    const Center(
-      child: Text('Likes', style: TextStyle(color: Colors.white)),
+      child: Text('Search', style: TextStyle(color: Colors.white)),
     ),
     const Center(
       child: Text('Profile', style: TextStyle(color: Colors.white)),
