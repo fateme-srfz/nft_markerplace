@@ -15,28 +15,37 @@ class BottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(24),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-        child: Container(
-          height: 85,
-          padding: const EdgeInsets.symmetric(horizontal: 22.0),
-          color: Colors.white.withAlpha(40),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildNavItem(0),
-              _buildNavItem(1),
-
-              _buildHexButton(),
-
-              _buildNavItem(2),
-              _buildNavItem(3),
-            ],
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(24),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+            child: Container(
+              height: 70,
+              padding: const EdgeInsets.symmetric(horizontal: 22.0),
+              color: Colors.white.withAlpha(40),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildNavItem(0),
+                  _buildNavItem(1),
+                  SizedBox(width: 70),
+                  _buildNavItem(2),
+                  _buildNavItem(3),
+                ],
+              ),
+            ),
           ),
         ),
-      ),
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 30,
+          child: Center(child: _buildHexButton()),
+        ),
+      ],
     );
   }
 
@@ -85,56 +94,63 @@ class BottomNav extends StatelessWidget {
 
   Widget _buildHexButton() {
     final bool isSelected = currentIndex == 10;
-    return GestureDetector(
-      onTap: onHexTap,
-      child: Container(
-        width: 70,
-        height: 70,
-        alignment: Alignment.center,
-        child: Stack(
-          children: [
-            Container(
-              width: 70,
-              height: 70,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: isSelected
-                        ? Colors.pinkAccent.withAlpha(60)
-                        : Colors.pinkAccent.withAlpha(40),
-                    blurRadius: isSelected ? 35 : 25,
-                  ),
-                ],
-              ),
+    return Container(
+      width: 70,
+      height: 70,
+      alignment: Alignment.center,
+      child: Stack(
+        children: [
+          Container(
+            width: 70,
+            height: 70,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: isSelected
+                      ? const Color.fromARGB(255, 68, 66, 67).withAlpha(60)
+                      : const Color.fromARGB(255, 230, 225, 226).withAlpha(40),
+                  blurRadius: isSelected ? 35 : 25,
+                ),
+              ],
             ),
+          ),
 
-            ClipPath(
-              clipper: HexagonClipper(),
-              child: Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: isSelected
-                        ? [Colors.pinkAccent, Color(0xFFb26ffc)]
-                        : [
-                            Color.fromARGB(255, 229, 218, 225),
-                            Color(0xFFb26ffc),
-                          ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+          ClipPath(
+            clipper: HexagonClipper(),
+            child: Material(
+              child: InkWell(
+                onTap: onHexTap,
+                splashColor: Colors.white24,
+                highlightColor: Colors.white10,
+                child: Ink(
+                  width: 70,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: isSelected
+                          ? [
+                              const Color.fromARGB(255, 205, 133, 157),
+                              Color.fromARGB(255, 49, 32, 66),
+                            ]
+                          : [
+                              Color.fromARGB(255, 229, 218, 225),
+                              Color.fromARGB(255, 80, 80, 81),
+                            ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                   ),
-                ),
-                child: Image.asset(
-                  'assets/icons/Minted.png',
-                  width: 35,
-                  height: 35,
-                  color: Colors.white,
+                  child: Image.asset(
+                    'assets/icons/Minted.png',
+                    width: 35,
+                    height: 35,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
