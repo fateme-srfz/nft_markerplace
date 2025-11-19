@@ -13,7 +13,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final pages = [
     const HomeScreen(),
-     StateScreen(),
+    StateScreen(),
     const Center(
       child: Text('Search', style: TextStyle(color: Colors.white)),
     ),
